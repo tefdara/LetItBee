@@ -38,7 +38,7 @@ def doMusaicing(source, target, result, sr = 22050, winSize = 2048, hopSize = 10
         fn = lambda V, W, H, iter, errs: plotNMFSpectra(V, W, H, iter, errs, hopSize)
         fnw = lambda W: plotInitialW(W, hopSize)
     H = doNMFDriedger(V, W, NIters, r=r, p=p, c=c, plotfn=fn, plotfnw = fnw)
-    H = np.array(H, dtype=np.complex)
+    H = np.array(H, dtype=complex)
     V2 = WComplex.dot(H)
     print("Doing phase retrieval...")
     Y = griffinLimInverse(V2, winSize, hopSize, NIters=30)
